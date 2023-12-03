@@ -29,4 +29,5 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-- サービス名：Font Awesome URL:https://fontawesome.com/
+- サービス名：Font Awesome 
+  URL:https://fontawesome.com/
