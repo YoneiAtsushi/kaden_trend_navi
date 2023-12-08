@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_064536) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genres_id", null: false
+    t.integer "genre_id", null: false
     t.string "product_name", null: false
     t.string "title", null: false
     t.text "introduction", null: false

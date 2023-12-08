@@ -1,2 +1,17 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<h1>投稿フォーム</h1>
+<%= form_with model: @post do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_area :title %>
+  <h4>型式</h4>
+  <%= f.text_field :product_name %>
+  <h4>ジャンル</h4>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "rounded" %>
+  <h4>紹介画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+  <!--<h4>おすすめ度（5段階で評価をつけることができます）</h4>-->
+  <!--<p>星で表示</p>-->
+  <h4>紹介文</h4>
+  <%= f.text_area :introduction %>
+  <%= f.submit '投稿' %>
+<% end %>
+
