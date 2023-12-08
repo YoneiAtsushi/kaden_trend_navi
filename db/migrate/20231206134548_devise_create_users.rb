@@ -34,6 +34,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
+      
+      t.string :name,                 null: false, default: ""
+      t.string :address,              null: false, default: ""
+      t.string :sex,                  null: false, default: ""
+      t.string :email_address,        null: false, default: ""
+      t.string :password,             null: false, default: ""
+      t.boolean:user_status,          null: false, default: true
     end
 
     add_index :users, :email,                unique: true
