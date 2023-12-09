@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_064536) do
     t.string "product_name", null: false
     t.string "title", null: false
     t.text "introduction", null: false
-    t.integer "review", null: false
+    t.integer "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

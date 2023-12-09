@@ -9,6 +9,13 @@ class Public::PostsController < ApplicationController
     @post.save
     redirect_to posts_path
   end
+  
+  def index
+    @posts = Post.all
+  end
+
+  def show
+  end
 
   def destroy
   end
@@ -19,17 +26,10 @@ class Public::PostsController < ApplicationController
   def update
   end
 
-  def index
-  end
-
-  def show
-  end
-
-
    private
 
   def post_params
-    params.require(:post).permit(:title, :image, :product_name, :introduction, :genre_id)
+    params.require(:post).permit(:title, :image, :product_name, :introduction, :genre_id, :ster)
   end
 
 

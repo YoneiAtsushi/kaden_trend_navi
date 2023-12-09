@@ -9,6 +9,26 @@
   <h4>紹介画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
   <!--<h4>おすすめ度（5段階で評価をつけることができます）</h4>-->
+
+    <div class="form-group" id="star">
+      <%= f.label :評価 %>
+      <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+      <div id="post_raty"></div>
+    </div>
+    <script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#post_raty');
+        if (elem == null) return;
+  
+        elem.innerHTML = ""
+        let opt = {  
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'post[star]',
+        };
+        raty(elem, opt);
+      });
+    </script>
   <!--<p>星で表示</p>-->
   <h4>紹介文</h4>
   <%= f.text_area :introduction %>
