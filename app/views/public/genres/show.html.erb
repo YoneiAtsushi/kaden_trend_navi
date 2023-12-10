@@ -1,0 +1,16 @@
+<div>
+  <%= render 'genre', genres: @genres %>
+　 <div>
+    <h5><%= @genre.name %>一覧（全<%= @genre.posts.count %>件）</h5>
+    <div>
+       <% @posts.each do |post| %>
+         <div>
+           <%= link_to post_path(post.id) do %>
+             <%= image_tag post.get_image(10,10) %><br>
+             <%= post.title %><br>
+           <% end %>
+         </div>
+       <% end %>
+    </div>
+   </div>
+</div>
