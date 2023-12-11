@@ -17,6 +17,9 @@ class Public::PostsController < ApplicationController
 
   def show
     @genres = Genre.all
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.all
   end
 
   def destroy
@@ -31,7 +34,7 @@ class Public::PostsController < ApplicationController
    private
 
   def post_params
-    params.require(:post).permit(:title, :image, :product_name, :introduction, :genre_id, :ster)
+    params.require(:post).permit(:title, :image, :product_name, :introduction, :genre_id, :star)
   end
 
 

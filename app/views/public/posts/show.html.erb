@@ -1,3 +1,39 @@
+<div class="row">
+  <div class="col-md-1 mb-3" ></div>
+
+
 <div>
  <%= render 'public/genres/genre', genres: @genres %>
+</div>
+<div>
+  <h4>レビュー詳細</h4>
+  <p>投稿日：<%= @post.created_at.strftime("%Y年%m月%d日") %></p>
+  <p>ユーザー名: <%= @post.user.name %></p>
+  <p>性別: <%= @post.user.sex %></p>
+  <p>タイトル：<%= @post.title %></p>
+  <p>ジャンル：<%= @post.genre.name %></p>
+  <p>型番：<%= @post.product_name %></p>
+  <%= render 'static_rate', post: @post %>
+  <p><%= image_tag @post.get_image(100,100) %></p>
+  <p><%= @post.introduction %></p>
+</div>
+
+  <div class="col md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">コメント欄</h5>
+      </div>
+      <div class="card-body">
+        <div id="comments_list">
+          <%= render 'public/comments/comments_list', post: @post %>
+        </div>
+        <div>
+          <%= form_with model: [@post, @comment], url:post_comment_index_path(@post),method: :post do|f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%= f.submit "コメント", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
