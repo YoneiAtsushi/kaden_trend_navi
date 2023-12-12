@@ -9,9 +9,21 @@ class Public::PostsController < ApplicationController
     @post.save
     redirect_to posts_path
   end
-  
+
   def index
+
+   if params[:latest]
+     @posts = Post.latest
+   elsif params[:old]
+     @posts = Post.old
+   elsif params[:star_count_many]
+     @posts = Post.star_count_many
+   elsif params[:star_count_few]
+     @posts = Post.star_count_few
+   else
     @posts = Post.all
+   end
+   
     @genres = Genre.all
   end
 
@@ -31,7 +43,7 @@ class Public::PostsController < ApplicationController
   def update
   end
 
-   private
+  private
 
   def post_params
     params.require(:post).permit(:title, :image, :product_name, :introduction, :genre_id, :star)

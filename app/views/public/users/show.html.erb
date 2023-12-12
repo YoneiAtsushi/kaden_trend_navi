@@ -7,7 +7,7 @@
 <div>
   <table>
     <tr>
-      <td><p><%= image_tag @user.get_profile_image(100, 100) %></p></td>
+      <td><p><%= image_tag @user.get_profile_image(100, 100),class: 'rounded-circle' %></p></td>
     </tr>
     <tr>
       <td><%= @user.name %></td>
@@ -15,13 +15,14 @@
     <tr>
       <td><%= @user.sex %></td>
     </tr>
+       <td><%= @user.email %></td>
   </table>
 
   <table>
     <div>
       <tr>
         <td>
-          <% unless @user.guest_user? %>
+          <% if @user.id == current_user.id && !current_user.guest_user? %>
             <div class="row">
               <%= link_to "プロフィールの編集", edit_information_path, class: "btn btn-outline-secondary btn-block" %>
             </div>

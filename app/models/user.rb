@@ -6,7 +6,11 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
+
+
+
+  # 画像使用の記述
+  has_one_attached :profile_image  
          
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -15,6 +19,10 @@ class User < ApplicationRecord
     end
     profile_image
   end 
+
+
+
+
         # ゲストユーザーログイン記述
   GUEST_USER_EMAIL = "guest@example.com"
 
@@ -29,5 +37,5 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
          
-  has_one_attached :profile_image
+  
 end
