@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
   root 'homes#top'
-  
+
   resources :users, only: [] do
     get 'mypage' => 'users#show', as: 'mypage'
   end
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   get 'users/information/edit' => 'users#edit', as: 'edit_information'
   patch 'users/information' => 'users#update', as: 'update_information'
   get 'users/chcek' => 'users#chcek', as: 'chcek'
-  put 'users/information' => 'users#update'
   patch 'users/withdraw' => 'users#withdraw' , as: 'withdraw'
 
 
