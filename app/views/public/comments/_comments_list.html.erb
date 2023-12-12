@@ -1,14 +1,13 @@
 <% post.comments.each do |comment| %>
   <div class="card mb-3">
     <div class="card-body">
-      <span class="comment-day small"><%= comment.how_long_ago %></span>
       <span class="comment-name small"><%= comment.user.name %></span>
       <span>
         <% if comment.user == current_user %>
-          <%= link_to '削除', post_comment_index_path(post, comment), method: :delete %>
+          <%= link_to '削除', post_comments_path(post, comment), method: :delete %>
         <% end %>
       </span>
-    　<p class="card-text"><%= comment.comment %></p>
+    　<p class="card-text"><%= comment.text %></p>
     </div>
   </div>
 <% end %>

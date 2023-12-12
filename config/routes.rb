@@ -21,7 +21,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
   root 'homes#top'
-  get 'users/mypage' => 'users#show', as: 'mypage'
+  
+  resources :users, only: [] do
+    get 'mypage' => 'users#show', as: 'mypage'
+  end
   # users/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
   get 'users/information/edit' => 'users#edit', as: 'edit_information'
   patch 'users/information' => 'users#update', as: 'update_information'
@@ -32,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :genres, only: [:show]
   resources :posts do
-  resources :comment, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
   end
