@@ -37,10 +37,11 @@
               <li class='nav-item'>
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
               </li>
+              
 
 
             <% elsif user_signed_in? %>
-              <!--<li class="text-secondary mr-5 mt-2">ようこそ、<%#= current_user.last_name %>さん！</li>-->
+              <li class="text-secondary mr-5 mt-2">ようこそ、<%= current_user.name %>さん！</li>
               <li class="nav-item">
                 <%= link_to 'マイページ', user_mypage_path(current_user), class: 'btn btn-outline-dark mr-1' %>
               </li>
@@ -72,11 +73,18 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
-  　<footer class="fixed-bottom text-center">
-  　　<div class="container">
-  　　  <p style="color: #aaa;">&copy; 2023 kaden_trend_navi</p>
-  　　</div>
-　　</footer>
-  </body>
+    <main>
+      <div id="notice">
+         <div class="alert alert-success" role="alert">
+           <%= flash[:notice] %>
+         </div>
+      </div>
+      <%= yield %>
+    </main>
+<footer class="fixed-bottom text-center">
+  <div class="container">
+      <p style="color: #aaa;">&copy; 2023 kaden_trend_navi</p>
+      </div>
+      </footer>
+      </body>
 </html>

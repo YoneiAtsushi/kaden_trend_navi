@@ -6,12 +6,16 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+    flash[:notice] = "投稿に成功しました。"
+    redirect_to post_path(@post.id)
+    else
+    render :new
+    end
   end
 
+# 並べ替え
   def index
-
    if params[:latest]
      @posts = Post.latest
    elsif params[:old]
@@ -23,7 +27,7 @@ class Public::PostsController < ApplicationController
    else
     @posts = Post.all
    end
-   
+
     @genres = Genre.all
   end
 
@@ -31,16 +35,29 @@ class Public::PostsController < ApplicationController
     @genres = Genre.all
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.all
+    # @comments = Comment.all
   end
 
   def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    flash[:notice] = "削除に成功しました"
+    redirect_to '/posts'
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+     @post = Post.find(params[:id])
+     if
+      @post.update(post_params)
+      flash[:notice] = "投稿を更新しました"
+     redirect_to post_path(@post.id)
+     else
+      render :edit
+     end
   end
 
   private

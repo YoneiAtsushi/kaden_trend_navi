@@ -6,17 +6,33 @@
  <%= render 'public/genres/genre', genres: @genres %>
 </div>
 <div>
-  <h4>レビュー詳細</h4>
+  <h4>レビュー</h4>
   <p>投稿日：<%= @post.created_at.strftime("%Y年%m月%d日") %></p>
   <p>ユーザー名: <%= @post.user.name %></p>
   <p>性別: <%= @post.user.sex %></p>
   <p>タイトル：<%= @post.title %></p>
   <p>ジャンル：<%= @post.genre.name %></p>
   <p>型番：<%= @post.product_name %></p>
-  <%= render 'static_rate', post: @post %>
+  <P>おすすめ：<%= render 'static_rate', post: @post %></P>
+  
+</div>
+<div>
   <p><%= image_tag @post.get_image(100,100) %></p>
   <p><%= @post.introduction %></p>
 </div>
+
+<div>
+  <% if @post.user == current_user %>
+  <%= link_to "編集",edit_post_path(@post),class:"btn btn-sm btn-success" %>
+  <% end %>
+</div>
+
+<div>
+  <p><% if @post.user == current_user %>
+   <%= link_to "削除", post_path(@post), class:"btn btn-sm btn-danger", method: :delete , data: {confirm: "本当に消しますか？"} %>
+  <p><% end %>
+</div>
+
 
   <div class="col md-4">
     <div class="card">

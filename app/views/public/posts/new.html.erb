@@ -1,4 +1,7 @@
 <h1>投稿フォーム</h1>
+
+<%= render 'public/shared/error_messages', resource: @post %>
+
 <%= form_with model: @post do |f| %>
   <h4>タイトル</h4>
   <%= f.text_area :title %>
@@ -9,7 +12,6 @@
   <h4>紹介画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
   <!--<h4>おすすめ度（5段階で評価をつけることができます）</h4>-->
-
     <div class="form-group" id="star">
       <%= f.label :評価 %>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
@@ -19,9 +21,9 @@
       $(document).on('turbolinks:load', function() {
         let elem = document.querySelector('#post_raty');
         if (elem == null) return;
-  
+
         elem.innerHTML = ""
-        let opt = {  
+        let opt = {
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           scoreName: 'post[star]',

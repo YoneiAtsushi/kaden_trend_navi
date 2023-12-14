@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
 
+  validates :name,   presence: true
+  validates :email,  presence: true
+  validates :sex,    presence: true
 
   # 画像使用の記述
   has_one_attached :profile_image  
