@@ -15,7 +15,7 @@ class User < ApplicationRecord
   # 画像使用の記述
   has_one_attached :profile_image  
          
-  def get_profile_image(width, height)
+  def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
@@ -23,10 +23,10 @@ class User < ApplicationRecord
     profile_image
   end 
 
+  
 
 
-
-        # ゲストユーザーログイン記述
+  # ゲストユーザーログイン記述
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -40,5 +40,9 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
          
+  # ログイン時に退会済みのユーザーが同じアカウントでのログインをできないようにする
+  def active_for_authentication?
+    super && (user_status == false)
+  end
   
 end

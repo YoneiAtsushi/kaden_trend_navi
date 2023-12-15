@@ -1,11 +1,13 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @users = User.page(params[:page]).per(10)
+    @users = User.page(params[:page]).per(5)
   end
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).per(5)
+    # @posts = Post.all
   end
 
   def edit

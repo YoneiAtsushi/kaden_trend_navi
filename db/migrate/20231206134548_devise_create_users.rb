@@ -40,7 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :sex,                  null: false, default: ""
       t.string :email_address,        null: false, default: ""
       t.string :password,             null: false, default: ""
-      t.boolean:user_status,          null: false, default: true
+      t.boolean:user_status,          null: false, default: false
     end
 
     add_index :users, :email,                unique: true

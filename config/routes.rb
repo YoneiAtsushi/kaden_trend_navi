@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
 
+  # 管理者側
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
-   # なぜ上はusersなのに下はadminなのか？
 
   namespace :admin do
   get 'top' => 'homes#top', as: 'top'
   resources :posts, only: [:index, :show, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update]
+  resources :comments, only: [:destroy]
   end
 
 
-
+# 　ユーザー
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :genres, only: [:show]
   resources :posts do
-    resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   end
 
   end

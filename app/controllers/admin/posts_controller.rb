@@ -11,7 +11,7 @@ def index
    elsif params[:star_count_few]
      @posts = Post.star_count_few
    else
-    @posts = Post.page(params[:page]).per(10)
+    @posts = Post.page(params[:page]).per(5)
    end
 
     # @genres = Genre.all
@@ -26,7 +26,7 @@ def index
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    flash[:notice] = "削に成功しました"
+    flash[:notice] = "削除に成功しました"
     redirect_to admin_posts_path
   end
 end

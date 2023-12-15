@@ -6,7 +6,7 @@ class Public::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to posts_path, notice: "ゲストユーザーとしてログインしました。"
   end
-  
+
   def after_sign_in_path_for(resource)
     posts_path
   end
@@ -33,4 +33,32 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  private
+
+
+  # def user_state
+  #   @user = User.find_by(email: params[:user][:email])
+  #   if @user
+  #     if @user.valid_password?(params[:user][:password]) && !@user.is_active
+  #       flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、再度ご登録をしてご利用ください。'
+  #       redirect_to new_user_session_path
+  #     end
+  #   end
+  # end
+
+
+  def reject_user
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.user_status == true)
+        flash[:notice] = "お客様は退会済みです。申し訳ございませんが、再度ご登録をしてご利用ください。"
+        redirect_to new_user_registration_path
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    else
+      flash[:notice] = "該当するユーザーが見つかりません"
+    end
+  end
 end

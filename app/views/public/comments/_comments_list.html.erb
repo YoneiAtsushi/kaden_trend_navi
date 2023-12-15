@@ -4,7 +4,7 @@
       <span class="comment-name small"><%= comment.user.name %></span>
       <span>
         <% if comment.user == current_user %>
-          <%= link_to '削除', post_comment_path(post, comment), method: :delete %>
+          <%= link_to '削除', post_comment_path(post, comment), method: :delete , data: {confirm: "本当に消しますか？"} %>
         <% end %>
       </span>
     　<p class="card-text"><%= comment.text %></p>

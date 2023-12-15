@@ -60,7 +60,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_sign_up_path_for(resource)
-    user_mypage_path
+    user_mypage_path(current_user)
   end
   
   def configure_sign_up_params

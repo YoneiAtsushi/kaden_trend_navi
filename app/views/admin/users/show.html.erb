@@ -31,13 +31,13 @@
 
         <tr>
           <td>会員ステータス</td>
-          <!--<td>-->
-          <!--  <%# if @user.user_status %>-->
-          <!--    <p>有効</p>-->
-          <!--  <%# else %>-->
-          <!--    <p>退会</p>-->
-          <!--  <%# end %>-->
-          <!--</td>-->
+          <td>
+            <% if @user.user_status %>
+              <p>退会</p>
+            <% else %>
+              <p>有効</p>
+            <% end %>
+          </td>
         </tr>
       </table>
 
@@ -51,4 +51,26 @@
       </table>
     </div>
   </div>
+  
+  <div>
+  <h2>ユーザー投稿一覧</h2>
+  <table>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><p><%= image_tag post.user.get_profile_image, width: 100, height: 100 %></p></td>
+          <td><p>投稿日：<%= post.created_at.strftime("%Y年%m月%d日") %></p></td>
+          <td><p>タイトル：<%= link_to post.title, admin_post_path(post.id) %></p></td>
+          <td><p>ジャンル：<%= post.genre.name %></p></td>
+          <td><p>型番：<%= post.product_name %></p></td>
+        </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+      <div class="d-flex justify-content-center">
+      <%= paginate @posts %>
+      </div>
+</div>
+<br><br><br><br><br><br><br><br>
 </div>

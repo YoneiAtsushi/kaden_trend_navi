@@ -23,13 +23,13 @@
 
           <td><%= user.email %></td>
 
-          <!--<td>-->
-          <!--  <%# if user.user_status %>-->
-          <!--    <a>有効</a>-->
-          <!--  <%# else %>-->
-          <!--    <a>退会</a>-->
-          <!--  <%# end %>-->
-          <!--</td>-->
+          <td>
+            <% if user.user_status %>
+              <a>有効</a>
+            <% else %>
+              <a>退会</a>
+            <% end %>
+          </td>
         </tr>
 
         <% end %>

@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
+    @posts = @user.posts.page(params[:page]).per(5)
     # @posts = @user.posts
     # @user = current_user
   end
@@ -26,6 +27,11 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+    @user = User.find(current_user.id)
+    @user.update(user_status: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
    private
