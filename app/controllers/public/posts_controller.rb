@@ -25,8 +25,10 @@ class Public::PostsController < ApplicationController
    elsif params[:star_count_few]
      @posts = Post.star_count_few
    else
-    @posts = Post.page(params[:page]).per(5)
+    @posts = Post.all
    end
+
+   @posts = @posts.page(params[:page]).per(5)
 
     @genres = Genre.all
   end
