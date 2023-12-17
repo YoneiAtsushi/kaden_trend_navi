@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :reject_user,only: [:create]
+  
   def guest_sign_in
     user = User.guest
     sign_in user
@@ -62,4 +64,3 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
 end
-# end

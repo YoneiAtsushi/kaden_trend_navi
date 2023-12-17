@@ -33,6 +33,7 @@ class User < ApplicationRecord
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲストユーザー"
+      user.sex = "その他"
     end
   end
   
@@ -41,8 +42,8 @@ class User < ApplicationRecord
   end
          
   # ログイン時に退会済みのユーザーが同じアカウントでのログインをできないようにする
-  def active_for_authentication?
-    super && (user_status == false)
-  end
+  # def active_for_authentication?
+  #   super && (user_status == false)
+  # end
   
 end
