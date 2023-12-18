@@ -1,1 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
+
+// 全体の背景色
+body {
+  background-color: #fff9f4;
+}
+
+
+// user編集ページ
+.form-group{
+  margin-bottom: 20px;
+}
+
+.genre_search{
+  margin-top: 16px;
+  margin-left: 10px;
+}

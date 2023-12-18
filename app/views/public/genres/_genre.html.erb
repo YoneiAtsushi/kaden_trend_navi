@@ -1,15 +1,15 @@
-<h4><strong>家電一覧</strong></h4>
-<table>
-  <% genres.each do |genre| %>
-    <tbody>
-      <tr>
-        <td>
-          <%= link_to genre.name, genre_path(genre.id), method: :get %>
-        </td>
-        <td>
-          <%= genre.posts.count %>
-        </td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
+<div class="genre_search mx-auto">
+  <table class="table table-borderless" style="border: solid 2px #4e454a; width: 180px;">
+    <tr>
+      <th class="text-center" style="border: solid 1px #4e454a;" colspan="2">家電製品一覧</th>
+    </tr>
+    <% genres.each do |genre| %>
+      <tbody>
+        <tr>
+          <td class="text-center"><%= link_to genre.name, genre_path(genre.id), method: :get %></td>
+          <td><%= genre.posts.count %> 件</td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

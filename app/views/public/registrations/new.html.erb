@@ -1,73 +1,51 @@
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <h5 class="border p-3 my-3">
-      新規会員登録
-    </h5>
-
-  </div>
-  <br>
-  <%= form_with(model: User.new, url: user_registration_path) do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
-
-  
-  <div class="row d-flex justify-content-center">
-     <div class="col-2"></div>
-    <div class="col-3">
-      <%= f.label :name, "名前" %>
+<div class=container>
+  <div class="row">
+    <div class="col-10 pt-5 pb-5 mx-auto">
+      <h4>新規会員登録</h4>
+      <%= form_with(model: User.new, url: user_registration_path) do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      
+    <div class="field">
+      <%= f.label :name, "ユーザー名" %>
+      <%= f.text_field :name, class:"form-control" %>
     </div>
-    <div class="col-7">
-      <%= f.text_field :name, class: "rounded" %>
-    </div>
-  </div>
 
-  <div class="row d-flex justify-content-center">
-     <div class="col-2"></div>
-    <div class="col-3">
-      <%= f.label :email, "メールアドレス" %>
+  　<div class="field">
+      <%= f.label :email, "メールアドレス" %><br/>
+      <%= f.email_field :email, placeholder: "sample@example.com", class:"form-control" %>
     </div>
-    <div class="col-7">
-      <%= f.email_field :email, placeholder: "sample@example.com", class: "rounded" %>
-    </div>
-  </div>
 
-  <div class="row d-flex justify-content-center">
-     <div class="col-2"></div>
-    <div class="col-3">
+  　<div class="field">
       <%= f.label :sex, "性別" %>
+      <%= f.select :sex, ['男性', '女性', 'その他'], { prompt: '選択してください' }, class:"form-control" %>
     </div>
-    <div class="col-7">
-      <%= f.select :sex, ['男性', '女性', 'その他'], { prompt: '選択してください' }, class: 'rounded' %>
-    </div>
-  </div>
 
-  <div class="row d-flex justify-content-center">
-    <div class="col-2"></div>
-    <div class="col-3">
+    <div class="field">
       <%= f.label :password, "パスワード" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %>文字以上)</em>
-      <% end %>
+      <% end %><br/>
+      <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
     </div>
-    <div class="col-7">
-      <%= f.password_field :password, autocomplete: "new-password", class: "rounded" %>
+    <div class="field">
+      <%= f.label :password_confirmation, "パスワード(確認用)" %><br/>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
     </div>
-  </div>
-  <div class="row d-flex justify-content-center">
-     <div class="col-2"></div>
-    <div class="col-3">
-      <%= f.label :password_confirmation, "パスワード(確認用)" %>
-    </div>
-    <div class="col-7">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded" %>
-    </div>
-    <div>
-      <%= f.submit "新規登録", class:"btn btn-success" %>
+    
+    <div class="actions">
+      <%= f.submit "新規登録", class:"btn btn-success mt-3" %>
     </div>
   </div>
   <% end %>
 
-  <div class="row d-flex justify-content-center my-4">
-    <h6 class="">既に登録済みの方は<%= render "public/shared/links" %></h6>
+  <div class="m-auto">既に登録がお済みの方
+    <%= link_to "こちら", new_session_path(resource_name) %>からログインしてください。
   </div>
 
+
 </div>
+</div>
+
+
+
+

@@ -1,30 +1,60 @@
-<div>
- <%= render 'public/genres/genre', genres: @genres %>
+<!--タイトル-->
+<div class="row my-5">
+  <h1 class="col-12 text-center">新着投稿</h1>
+</div>
+<!--ジャンル検索-->
+<div class=row>
+  <div class="genre_search col-lg-2">
+    <%= render 'public/genres/genre', genres: @genres %>
+  </div>
+<!--投稿一覧-->
+    <div class="col-lg-7">
+      <div class="sort_feature text-right mb-2">
+          <%= link_to '新しい順', posts_path(latest: "true") %>
+          <%= link_to '古い順', posts_path(old: "true") %>
+          <%= link_to '評価の高い順', posts_path(star_count_many: "true") %>
+          <%= link_to '評価の低い順', posts_path(star_count_few: "true") %>
+      </div>
+
+
+<div class="card mb-3 mx-auto" style="max-width: 600px; ">
+  <div class="row no-gutters">
+    <% if !@posts.empty? %>
+      <% @posts.each do |post| %>
+        <div><%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120), user_mypage_path(post.user) %></div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
+               <p class="card-text"><br>
+                                    ジャンル：<%= post.genre.name %><br>
+                                    型番：<%= post.product_name %>
+               </p>
+               <p class="card-text"><%= post.created_at.strftime("%Y年%m月%d日") %>
+            </div>
+          </div>
+        <% end %>
+  </div>
 </div>
 
-<h1>新着投稿</h1>
-<p>
-     <%= link_to '新しい順', posts_path(latest: "true") %>
-     <%= link_to '古い順', posts_path(old: "true") %>
-     <%= link_to '評価の高い順', posts_path(star_count_many: "true") %>
-     <%= link_to '評価の低い順', posts_path(star_count_few: "true") %>
-</p>
 
-<% if !@posts.empty? %>
-<% @posts.each do |post| %>
- <div>
-   <p><%= link_to image_tag(post.user.get_profile_image, width: 100, height: 100), user_mypage_path(post.user) %></p>
-   <p>投稿日：<%= post.created_at.strftime("%Y年%m月%d日") %></p>
-   <p>タイトル：<%= link_to post.title, post_path(post.id) %></p>
-   <p>ジャンル：<%= post.genre.name %></p>
-   <p>型番：<%= post.product_name %></p>
-</div>
-<% end %>
+            
+            
 <div class="d-flex justify-content-center">
   <%= paginate @posts %>
 </div>
 <% else %>
  まだ投稿がありません
 <% end %>
+</div>
+</div>
 
-<br><br><br><br><br><br><br><br><br>
+
+
+
+
+     
+      
+        
+        
+        
+
