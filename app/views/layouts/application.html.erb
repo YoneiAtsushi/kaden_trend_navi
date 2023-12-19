@@ -39,21 +39,25 @@
               </li>
               
 
-
             <% elsif user_signed_in? %>
               <li class="text-secondary mr-5 mt-2">ようこそ、<%= current_user.name %>さん！</li>
-              <li class="nav-item">
-                <%= link_to 'マイページ', user_mypage_path(current_user), class: 'btn btn-outline-dark mr-1' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to '投稿する', new_post_path, class: "btn btn-outline-dark mr-1" %>
-              </li>
+              
+              <% if current_user.guest_user? %>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to 'マイページ', user_mypage_path(current_user), class: 'btn btn-outline-dark mr-1' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '投稿する', new_post_path, class: "btn btn-outline-dark mr-1" %>
+                </li>
+              <% end %>
               <li class="nav-item">
                 <%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mr-1" %>
               </li>
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-dark mr-1" %>
               </li>
+              
               
             <% else %>
               <li class="nav-item">
@@ -81,10 +85,6 @@
       </div>
       <%= yield %>
     </main>
-<footer class="fixed-bottom text-center bg-light py-2">
-  <div class="container">
-      <p style="color: #aaa;">&copy; 2023 kaden_trend_navi</p>
-      </div>
-      </footer>
-      </body>
+    <footer>&copy; 2023 kaden_trend_navi</footer>
+  </body>
 </html>

@@ -5,13 +5,31 @@ body {
   background-color: #fff9f4;
 }
 
+// フッター
+footer {
+  position: sticky;
+  margin-bottom: 0px;
+  margin-top: 50px;
+  top: 100vh;
+  width: 100%;
+  height: 80px;
+  text-align:center;
+}
+
 
 // user編集ページ
 .form-group{
   margin-bottom: 20px;
 }
 
+// ジャンル検索
 .genre_search{
-  margin-top: 16px;
+  margin-top: 23px;
   margin-left: 10px;
+}
+// なぜか表示されず
+#custom_genre_select {
+  height: 30px;
+  width: 240;
+  margin-top: 7px;
 }

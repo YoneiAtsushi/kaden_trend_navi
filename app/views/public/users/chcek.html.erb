@@ -1,16 +1,18 @@
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    <section class="check-edit">
-      <h1>本当に退会しますか？</h1>
-      <p>
-        停止すると、会員登録情報やこれまでの投稿履歴が閲覧できなくなります。<br>
-        ですが、投稿したレビューは保持されます。<br>
-        退会する場合は、「退会する」をクリックしてください。
-      </p>
-      <div class="d-flex justify-content-between mt-4">
-        <%= link_to "退会しない", user_mypage_path(current_user), :class => "btn btn-primary ms-3" %>
-        <%= link_to "退会する", withdraw_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
-      </div>
-    </section>
+<div class=container>  
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+      <section class="check-edit">
+        <h1>本当に退会しますか？</h1><br>
+        <p>
+          停止すると、会員登録情報やこれまでの投稿履歴が閲覧できなくなります。<br>
+          ですが、投稿したレビューは保持されます。<br>
+          退会する場合は、「退会する」をクリックしてください。
+        </p>
+        <div class="d-flex justify-content-around mt-5">
+          <%= link_to "退会する", withdraw_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+          <%= link_to "退会しない", user_mypage_path(current_user), :class => "btn btn-primary ms-3" %>
+        </div>
+      </section>
+    </div>
   </div>
-</div>
+</divv>
