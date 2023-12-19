@@ -30,9 +30,9 @@
           <% @posts.each do |post| %>
             <div class="card col-12" style="margin-bottom: 10px;">
               <div class="row">
-               <div class="col-3 m-auto" style="padding-left: 40px;">
-                 <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), user_mypage_path(post.user) %>
-               </div>
+                <div class="col-3 m-auto" style="padding-left: 40px;">
+                  <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), user_mypage_path(post.user) %>
+                </div>
                 <div class="col-9">
                   <div class="card-body">
                     <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
