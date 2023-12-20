@@ -6,10 +6,7 @@ class Public::GenresController < ApplicationController
     # @posts = @genre.posts
   # end
   
-  
-  
-  
-  
+
   def show
    @genre = Genre.find(params[:id])
    @posts = @genre.posts
@@ -30,10 +27,6 @@ class Public::GenresController < ApplicationController
 
     @genres = Genre.all
   end
-  
-  
-  
-  
 end
 
 
