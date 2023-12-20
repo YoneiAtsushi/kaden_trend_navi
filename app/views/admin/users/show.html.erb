@@ -42,35 +42,53 @@
       </table>
 
       <table class="table table-borderless">
-        <div class="row d-flex justify-content-center">
-        <tr>
-          <td><%= link_to "編集する", edit_admin_user_path, class: "btn btn-success" %></td>
-        </tr>
-      </div>
-
+        <div class="row">
+          <tr>
+            <td><%= link_to "編集する", edit_admin_user_path, class: "btn btn-outline-secondary btn-block" %></td>
+          </tr>
+        </div>
       </table>
     </div>
   </div>
-  
-  <div>
-  <h2>ユーザー投稿一覧</h2>
-  <table>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><p><%= image_tag post.user.get_profile_image, width: 100, height: 100 %></p></td>
-          <td><p>投稿日：<%= post.created_at.strftime("%Y年%m月%d日") %></p></td>
-          <td><p>タイトル：<%= link_to post.title, admin_post_path(post.id) %></p></td>
-          <td><p>ジャンル：<%= post.genre.name %></p></td>
-          <td><p>型番：<%= post.product_name %></p></td>
-        </tr>
-      <% end %>
-      
-    </tbody>
-  </table>
-      <div class="d-flex justify-content-center">
-      <%= paginate @posts %>
-      </div>
 </div>
-<br><br><br><br><br><br><br><br>
+  
+<div class="row my-4">
+  <h4 class="col-12 text-center border p-3 my-3">ユーザー投稿一覧</h4>
+</div>
+<div class="row">
+  <div class="col-12 justify-content-center">
+    <div class="mb-3 mx-auto" style="max-width: 600px; ">
+      <div class="row no-gutters">
+        <% if !@posts.empty? %>
+          <% @posts.each do |post| %>
+            <div class="card col-12" style="margin-bottom: 10px;">
+              <div class="row">
+                <div class="col-3 m-auto" style="padding-left: 40px;">
+                  <%= image_tag post.user.get_profile_image, width: 100, height: 100, class: 'rounded-circle' %>
+                </div>
+                <div class="col-9">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= link_to post.title, admin_post_path(post.id) %></h5>
+                     <p class="card-text"><br>
+                                          ジャンル：<%= post.genre.name %><br>
+                                          型番：<%= post.product_name %>
+                     </p>
+                     <p class="card-text"><%= post.created_at.strftime("%Y年%m月%d日") %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class=paginate>
+        <%= paginate @posts %>
+      </div>
+    </div>
+      <% else %>
+      まだ投稿がありません
+      <% end %>
+  </div>
 </div>

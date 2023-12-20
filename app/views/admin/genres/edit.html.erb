@@ -1,7 +1,23 @@
- <h3>ジャンル編集</h3>
-
+<div class="container">
+  <div class="row">
+    <h4 class="col-12 text-center border p-3 my-3">ジャンル編集</h4> 
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div>
       <%= form_with model: @genre, url: admin_genre_path,method: :patch do |f| %>
-        <td><%= f.label :"ジャンル名", class: "mr-3" %></td>
-        <td><%= f.text_field :name, class: "mr-5" %></td>
-        <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+        <table class="table table-borderless">
+            <tr>  
+              <td><%= f.text_field :name, class: "mt-5" %></td>
+            <tr>
+        </table>
+        <table class="table table-borderless">
+          <div class="row">
+            <tr>
+              <td><%= f.submit "変更を保存", class: "btn btn-outline-secondary btn-block" %></td>
+            </tr>
+          </div>
+        </table>
       <% end %>
+    </div>
+  </div>
+</div>  
