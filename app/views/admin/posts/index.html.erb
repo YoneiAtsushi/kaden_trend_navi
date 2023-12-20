@@ -24,11 +24,11 @@
             <div class="card col-12" style="margin-bottom: 10px;">
               <div class="row">
                 <div class="col-3 m-auto" style="padding-left: 40px;">
-                  <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), user_mypage_path(post.user) %>
+                  <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), admin_user_path(post.user) %>
                 </div>
                 <div class="col-9">
                   <div class="card-body">
-                    <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
+                    <h5 class="card-title"><%= link_to post.title, admin_post_path(post.id) %></h5>
                      <p class="card-text"><br>
                                           ジャンル：<%= post.genre.name %><br>
                                           型番：<%= post.product_name %>

@@ -1,40 +1,54 @@
 <div class="row">
-  <div class="col-md-1 mb-3" ></div>
-
-
-<div>
- <%= render 'public/genres/genre', genres: @genres %>
+  <div class="col-7 offset-2 mb-3">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">レビュー詳細</h5>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <tbody>
+             <tr>
+              <th>投稿日</th>
+              <td><%= @post.created_at.strftime("%Y年%m月%d日") %></td>
+            </tr>
+            <tr>
+              <th>ユーザ名</th>
+              <td><%= @post.user.name %></td>
+            </tr>
+            <tr>
+              <th>性別</th>
+              <td><%= @post.user.sex %></td>
+            </tr>
+            <tr>
+              <th>タイトル</th>
+              <td><%= @post.title %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @post.genre.name %></td>
+            </tr>
+            <tr>
+              <th>型番</th>
+              <td><%= @post.product_name %></td>
+            <tr>
+              <th>おすすめ</th>
+              <td><%= render 'static_rate', post: @post %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><%= image_tag @post.get_image, width: 200, height: 200 %></td>
+            </tr>
+            <tr>
+              <th>本文</th>
+              <td><%= @post.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 </div>
-<div>
-  <h4>レビュー</h4>
-  <p>投稿日：<%= @post.created_at.strftime("%Y年%m月%d日") %></p>
-  <p>ユーザー名: <%= @post.user.name %></p>
-  <p>性別: <%= @post.user.sex %></p>
-  <p>タイトル：<%= @post.title %></p>
-  <p>ジャンル：<%= @post.genre.name %></p>
-  <p>型番：<%= @post.product_name %></p>
-  <P>おすすめ：<%= render 'static_rate', post: @post %></P>
 
-</div>
-<div>
-  <p><%= image_tag @post.get_image, width: 100, height: 100 %></p>
-  <p><%= @post.introduction %></p>
-</div>
-
-<div>
-  <% if @post.user == current_user %>
-  <%= link_to "編集",edit_post_path(@post),class:"btn btn-sm btn-success" %>
-  <% end %>
-</div>
-
-<div>
-  <p><% if @post.user == current_user %>
-   <%= link_to "削除", post_path(@post), class:"btn btn-sm btn-danger", method: :delete , data: {confirm: "本当に消しますか？"} %>
-  <p><% end %>
-</div>
-
-
-  <div class="col md-4">
+  <div class="col-3">
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">コメント欄</h5>
@@ -43,15 +57,25 @@
         <div id="comments_list">
           <%= render 'public/comments/comments_list', post: @post %>
         </div>
-        <% unless @post.user == current_user || current_user.guest_user? %>
+          <% unless @post.user == current_user || current_user.guest_user? %>
         <div>
           <%= form_with model: [@post, @comment], url:post_comments_path(@post),method: :post do|f| %>
           <%= f.text_area :text, rows: '5', placeholder: "コメントをここに" %>
+        </div>
+        <div class="text-center mb-2">
           <%= f.submit "コメント", class: "btn btn-primary" %>
           <% end %>
         </div>
         <% end %>
       </div>
     </div>
+     <div class="btn-group">
+       <% if @post.user == current_user %>
+       <%= link_to "編集",edit_post_path(@post),class:"btn btn-sm btn-success" %>
+       <% end %>
+       <% if @post.user == current_user %>
+       
+       <% end %>
+     </div>
   </div>
 </div>

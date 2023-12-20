@@ -23,23 +23,24 @@
         <%= link_to '評価の低い順', posts_path(star_count_few: "true"), class:"btn btn-outline-dark #{'active' if params[:star_count_few]}" %>
       </li>
     </ul>
-    <div class="mb-3 mx-auto" style="max-width: 600px; ">
+    <div class="mb-3 mx-auto" style="max-width: 700px; ">
       <div class="row no-gutters">
         <% if !@posts.empty? %>
           <% @posts.each do |post| %>
-            <div class="card col-12" style="margin-bottom: 10px;">
+            <div class="card col-12" style="margin-bottom: 20px;">
               <div class="row">
-                <div class="col-3 m-auto" style="padding-left: 40px;">
-                  <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), user_mypage_path(post.user) %>
+                <div class="col-4 m-auto text-center">
+                  <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), user_mypage_path(post.user) %><br>
+                  ユーザー名: <%= post.user.name %>
                 </div>
-                <div class="col-9">
+                <div class="col-8">
                   <div class="card-body">
                     <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
                      <p class="card-text"><br>
                                           ジャンル：<%= post.genre.name %><br>
-                                          型番：<%= post.product_name %>
+                                          品番：<%= post.product_name %><br>
                      </p>
-                     <p class="card-text"><%= post.created_at.strftime("%Y年%m月%d日") %>
+                     <p class="card-text text-right"><%= post.created_at.strftime("%Y年%m月%d日") %>投稿</p>
                   </div>
                 </div>
               </div>
