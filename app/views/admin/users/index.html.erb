@@ -36,7 +36,5 @@
       </tbody>
     </table>
   </div>
-  <div class="d-flex justify-content-center">
-  <%= paginate @users %>
-  </div>
+  <%= render 'partial_template/paginate', posts: @users %>
 </div>

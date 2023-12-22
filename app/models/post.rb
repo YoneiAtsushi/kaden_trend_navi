@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :genre
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :image
   
   
@@ -25,5 +26,9 @@ class Post < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   scope :star_count_many, -> {order(star: :desc)}
   scope :star_count_few, -> {order(star: :asc)}
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
   
 end

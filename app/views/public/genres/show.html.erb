@@ -43,10 +43,7 @@
           <% end %>
       </div>
     </div>
-
-    <div class="d-flex justify-content-center">
-      <%= paginate @posts %>
-    </div>
+    <%= render 'partial_template/paginate', posts: @posts %>
     <% else %>
     まだ投稿がありません
     <% end %>

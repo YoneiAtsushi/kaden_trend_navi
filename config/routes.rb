@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
 
-# 　ユーザー
+# 　ユーザー側
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:show]
   resources :posts do
   resources :comments, only: [:create, :destroy]
+  resource :favorite, only: [:create, :destroy]
   end
 
   end
