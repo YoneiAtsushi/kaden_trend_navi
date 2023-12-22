@@ -1,0 +1,9 @@
+<% if post.user != current_user && !post.favorited_by?(current_user) %>
+  <%= link_to post_favorite_path(post), method: :post, remote: true do %>
+    参考になった：   <%= post.favorites.count %>
+  <% end %>
+<% elsif post.favorited_by?(current_user) %>
+  <%= link_to post_favorite_path(post), method: :delete, remote: true do %>
+    参考になった：   <%= post.favorites.count %> 
+  <% end %>
+<% end %>

@@ -36,9 +36,10 @@
                 <div class="col-8">
                   <div class="card-body">
                     <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
-                     <p class="card-text"><br>
+                     <p class="card-text">
                                           ジャンル：<%= post.genre.name %><br>
                                           品番：<%= post.product_name %><br>
+                                          参考になった：   <%= post.favorites.count %>
                      </p>
                      <p class="card-text text-right"><%= post.created_at.strftime("%Y年%m月%d日") %>投稿</p>
                   </div>
