@@ -14,7 +14,7 @@
 
   <body class="d-flex flex-column vh-100">
      <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,16 +26,16 @@
           <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <li class='nav-item'>
-                <%= link_to '投稿一覧', admin_posts_path, class: 'btn btn-outline-dark mr-1' %>
+                <%= link_to '投稿一覧', admin_posts_path, class: 'nav-link text-dark mr-3' %>
               </li>
               <li class='nav-item'>
-                <%= link_to '会員一覧', admin_users_path, class: 'btn btn-outline-dark mr-1' %>
+                <%= link_to '会員一覧', admin_users_path, class: 'nav-link text-dark mr-3' %>
               </li>
               <li class='nav-item'>
-                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-outline-dark mr-1' %>
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark mr-3' %>
               </li>
               <li class='nav-item'>
-                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
               
 
@@ -45,31 +45,31 @@
               <% if current_user.guest_user? %>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to 'マイページ', user_mypage_path(current_user), class: 'btn btn-outline-dark mr-1' %>
+                  <%= link_to 'マイページ', user_mypage_path(current_user), class: 'nav-link text-dark mr-3' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿する', new_post_path, class: "btn btn-outline-dark mr-1" %>
+                  <%= link_to '投稿する', new_post_path, class: 'nav-link text-dark mr-3' %>
                 </li>
               <% end %>
               <li class="nav-item">
-                <%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mr-1" %>
+                <%= link_to '投稿一覧', posts_path, class: 'nav-link text-dark mr-3' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-dark mr-1" %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark mr-3' %>
               </li>
               
               
             <% else %>
               <li class="nav-item">
-                <%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mr-1" %>
+                <%= link_to '投稿一覧', posts_path, class: 'nav-link text-dark mr-3' %>
               </li>
 
               <li class="nav-item">
-                <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-dark mr-1" %>
+                <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark mr-3' %>
               </li>
 
               <li class="nav-item">
-                <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-dark" %>
+                <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark mr-3' %>
               </li>
               
             <% end %>
@@ -85,6 +85,12 @@
       </div>
       <%= yield %>
     </main>
-    <footer>&copy; 2023 kaden_trend_navi</footer>
+    <footer>
+      <div class="py-4">
+        <div class="container">
+         <p class="m-0 text-center text-dark">&copy; 2023 kaden_trend_navi</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

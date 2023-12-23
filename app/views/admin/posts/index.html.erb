@@ -23,17 +23,19 @@
           <% @posts.each do |post| %>
             <div class="card col-12" style="margin-bottom: 10px;">
               <div class="row">
-                <div class="col-3 m-auto" style="padding-left: 40px;">
-                  <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), admin_user_path(post.user) %>
+                <div class="col-4 m-auto text-center border-right">
+                  <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), admin_user_path(post.user) %><br>
+                  ユーザー名: <%= post.user.name %>
                 </div>
-                <div class="col-9">
+                <div class="col-8">
                   <div class="card-body">
                     <h5 class="card-title"><%= link_to post.title, admin_post_path(post.id) %></h5>
-                     <p class="card-text"><br>
+                     <p class="card-text">
                                           ジャンル：<%= post.genre.name %><br>
-                                          型番：<%= post.product_name %>
+                                          品番：<%= post.product_name %><br>
+                                          参考になった：   <%= post.favorites.count %>
                      </p>
-                     <p class="card-text"><%= post.created_at.strftime("%Y年%m月%d日") %>
+                     <p class="card-text text-right"><%= post.created_at.strftime("%Y年%m月%d日") %>投稿</p>
                   </div>
                 </div>
               </div>

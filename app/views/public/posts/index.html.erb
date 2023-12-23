@@ -29,7 +29,7 @@
           <% @posts.each do |post| %>
             <div class="card col-12" style="margin-bottom: 20px;">
               <div class="row">
-                <div class="col-4 m-auto text-center">
+                <div class="col-4 m-auto text-center border-right">
                   <%= link_to image_tag(post.user.get_profile_image, width: 120, height: 120, class: 'rounded-circle'), user_mypage_path(post.user) %><br>
                   ユーザー名: <%= post.user.name %>
                 </div>

@@ -36,7 +36,18 @@
             </tr>
             <tr>
               <th></th>
-              <td><%= image_tag @post.get_image, width: 200, height: 200 %></td>
+              <td>
+                <button type="button" data-toggle="modal" data-target="#exampleModalLong">
+                  <%= image_tag @post.get_image, width: 200, height: 200 %>
+                </button>
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-body">
+                      <%= image_tag @post.get_image, width: 500, height: 500 %>
+                    </div>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
               <th>本文</th>
@@ -47,7 +58,7 @@
       </div>
     </div>
     <div class="text-center mt-4">
-      <%= link_to "投稿削除", post_path(@post), class:"btn btn-sm btn-danger", method: :delete , data: {confirm: "本当に消しますか？"} %>
+      <%= link_to "投稿削除", post_path(@post), class:"btn btn-outline-danger", method: :delete , data: {confirm: "本当に消しますか？"} %>
     </div> 
   </div>
 

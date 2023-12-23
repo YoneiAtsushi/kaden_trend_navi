@@ -9,7 +9,7 @@ ja:
         current_password: 現在のパスワード
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
-        email: Eメール
+        email: メールアドレス
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
@@ -25,6 +25,18 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        name: ユーザー名
+        sex: 性別
+        genre: ジャンル
+        post: 投稿
+        product_name: 型式
+        title: タイトル
+        introduction: 紹介文
+        star: 5段階評価
+        
+        
+        
+        
     models:
       user: ユーザー
   devise:
@@ -141,3 +153,10 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+  # posts:
+  #   post: 
+  #     Genre: ジャンル
+  #     Product_name: 型式
+  #     Title: タイトル
+  #     Introduction: 紹介文
+  #     Star: 5段階評価
