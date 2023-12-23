@@ -5,6 +5,13 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
   activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        introduction: "紹介文"
+        star: "５段階評価"
+        product_name: "型式"
+        genre: "ジャンル"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

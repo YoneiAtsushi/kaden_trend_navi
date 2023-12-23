@@ -4,10 +4,10 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
   if comment.save
-    redirect_to request.referer
+    # redirect_to request.referer
   else
     flash[:notice] = "※コメントが空白です"
-    redirect_to request.referer
+    # redirect_to request.referer
   end
 end
 
@@ -15,7 +15,7 @@ end
     comment = Comment.find(params[:id])
     comment.destroy
     flash[:notice] = "削除しました"
-    redirect_to request.referer
+    # redirect_to request.referer
   end
   
   private

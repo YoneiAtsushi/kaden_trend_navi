@@ -38,6 +38,7 @@ ja:
         
         
     models:
+      post: 投稿
       user: ユーザー
   devise:
     confirmations:
