@@ -17,10 +17,10 @@
         <%= link_to '古い順', genre_path(old: "true"), class:"btn btn-outline-dark #{'active' if params[:old]}" %>
       </li>
       <li class="nav-item mr-1">
-        <%= link_to '評価の高い順', genre_path(star_count_many: "true"), class:"btn btn-outline-dark #{'active' if params[:star_count_many]}" %>
+        <%= link_to 'おすすめ度 高い順', genre_path(star_count_many: "true"), class:"btn btn-outline-dark #{'active' if params[:star_count_many]}" %>
       </li>
       <li class="nav-item mr-1">
-        <%= link_to '評価の低い順', genre_path(star_count_few: "true"), class:"btn btn-outline-dark #{'active' if params[:star_count_few]}" %>
+        <%= link_to 'おすすめ度 低い順', genre_path(star_count_few: "true"), class:"btn btn-outline-dark #{'active' if params[:star_count_few]}" %>
       </li>
     </ul>
     <div class="mb-3 mx-auto" style="max-width: 700px; ">
@@ -35,12 +35,24 @@
                 </div>
                 <div class="col-8">
                   <div class="card-body">
-                    <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
+                    <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                      <%= link_to post.title, post_path(post.id) %>
+                    </h5>
                      <p class="card-text">
-                                          品番：<%= post.product_name %><br>
-                                          参考になった：   <%= post.favorites.count %>
+                       <div class="row">
+                         <div class="col-4">品番</div>
+                         <div class="col-8">：<%= post.product_name %></div>
+                       </div>
+                       <div class="row">
+                         <div class="col-4">参考になった</div>
+                         <div class="col-8">：<%= post.favorites.count %> 件</div>
+                       </div>
+                       <div class="row">
+                         <div class="col-4">おすすめ</div>
+                         <div class="col-8">：<%= render 'public/posts/static_rate', post: post %></div>
+                       </div>
                      </p>
-                     <p class="card-text text-right"><%= post.created_at.strftime("%Y年%m月%d日") %>投稿</p>
+                     <p class="card-text text-right text-secondary"><%= post.created_at.strftime("%Y年%m月%d日") %>投稿</p>
                   </div>
                 </div>
               </div>

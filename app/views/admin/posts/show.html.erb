@@ -8,42 +8,42 @@
         <table class="table">
           <tbody>
              <tr>
-              <th>投稿日</th>
-              <td><%= @post.created_at.strftime("%Y年%m月%d日") %></td>
+              <th style="width: 100px;">投稿日</th>
+              <td style="text-align: center;"><%= @post.created_at.strftime("%Y年%m月%d日") %></td>
             </tr>
             <tr>
               <th>ユーザ名</th>
-              <td><%= @post.user.name %></td>
+              <td style="text-align: center;"><%= @post.user.name %></td>
             </tr>
             <tr>
               <th>性別</th>
-              <td><%= @post.user.sex %></td>
+              <td style="text-align: center;"><%= @post.user.sex %></td>
             </tr>
             <tr>
               <th>タイトル</th>
-              <td><%= @post.title %></td>
+              <td style="text-align: center;"><%= @post.title %></td>
             </tr>
             <tr>
               <th>ジャンル</th>
-              <td><%= @post.genre.name %></td>
+              <td style="text-align: center;"><%= @post.genre.name %></td>
             </tr>
             <tr>
               <th>型番</th>
-              <td><%= @post.product_name %></td>
+              <td style="text-align: center;"><%= @post.product_name %></td>
             <tr>
               <th>おすすめ</th>
-              <td><%= render 'public/posts/static_rate', post: @post %></td>
+              <td style="text-align: center;"><%= render 'public/posts/static_rate', post: @post %></td>
             </tr>
             <tr>
               <th></th>
-              <td>
+              <td style="text-align: center;">
                 <button type="button" data-toggle="modal" data-target="#exampleModalLong">
-                  <%= image_tag @post.get_image, width: 200, height: 200 %>
+                  <%= image_tag @post.get_image, height: 200 %>
                 </button>
                 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-body">
-                      <%= image_tag @post.get_image, width: 500, height: 500 %>
+                      <%= image_tag @post.get_image, height: 600 %>
                     </div>
                   </div>
                 </div>
