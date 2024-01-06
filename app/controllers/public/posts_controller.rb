@@ -6,7 +6,11 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tags = Vision.get_image_data(post_params[:image])
     if @post.save
+      tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
     flash[:notice] = "投稿に成功しました。"
     redirect_to post_path(@post.id)
     else
