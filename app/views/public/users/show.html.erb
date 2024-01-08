@@ -74,6 +74,14 @@
                          <div class="col-8">：<%= post.product_name %></div>
                        </div>
                        <div class="row">
+                         <div class="col-4">タグ</div>
+                         <div class="col-8">：
+                          <% post.tags.each do |tag| %>
+                          <span class="badge badge-success"><%= tag.name %></span>
+                          <% end %>
+                         </div>
+                       </div>
+                       <div class="row">
                          <div class="col-4">参考になった</div>
                          <div class="col-8">：<%= post.favorites.count %> 件</div>
                        </div>
