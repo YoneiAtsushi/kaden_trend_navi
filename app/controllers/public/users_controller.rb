@@ -5,7 +5,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.page(params[:page]).per(5)
     # @posts = @user.posts
-    # @user = current_user
   end
 
   def edit
