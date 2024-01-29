@@ -2,12 +2,13 @@
   <div class="row">
     <h4 class="col-12 text-center border p-3 my-3">ジャンル管理</h4>
   </div>
+
   <div class="row justify-content-center my-3">
-     <%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
-       <td><%= f.label :"ジャンル名", class: "mr-3" %></td>
-       <td><%= f.text_field :name, class: "mr-5" %></td>
-       <td><%= f.submit'新規登録',class: "btn btn-outline-primary" %></td>
-     <% end %>
+    <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
+      <td><%= f.label :"ジャンル名", class: "mr-3" %></td>
+      <td><%= f.text_field :name, class: "mr-5" %></td>
+      <td><%= f.submit '新規登録', class: "btn btn-outline-primary" %></td>
+    <% end %>
   </div>
 
   <div class="row">

@@ -6,14 +6,11 @@ class Post < ApplicationRecord
   has_many :tags, dependent: :destroy
   has_one_attached :image
   
-  
-  
   validates :product_name, presence: true
-  validates :title,        presence: true, length: { minimum: 3, maximum: 35 }
+  validates :title, presence: true, length: { minimum: 3, maximum: 35 }
   validates :introduction, presence: true
-  validates :star,         presence: true
-  # validates :genre_id,     presence: true
-  
+  validates :star, presence: true
+  # validates :genre_id, presence: true
   
   def get_image
     unless image.attached?
@@ -23,13 +20,12 @@ class Post < ApplicationRecord
     image
   end
   
-  scope :latest, -> {order(created_at: :desc)}
-  scope :old, -> {order(created_at: :asc)}
-  scope :star_count_many, -> {order(star: :desc)}
-  scope :star_count_few, -> {order(star: :asc)}
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old, -> { order(created_at: :asc) }
+  scope :star_count_many, -> { order(star: :desc) }
+  scope :star_count_few, -> { order(star: :asc) }
   
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
 end

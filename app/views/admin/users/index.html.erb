@@ -15,23 +15,18 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
-
-        <tr>
-          <td><%= user.id %></td>
-
-          <td><%= link_to user.name, admin_user_path(user) %></td>
-
-          <td><%= user.email %></td>
-
-          <td>
-            <% if user.user_status %>
-              <a>退会</a>
-            <% else %>
-              <a>有効</a>
-            <% end %>
-          </td>
-        </tr>
-
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.user_status %>
+                <a>退会</a>
+              <% else %>
+                <a>有効</a>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>

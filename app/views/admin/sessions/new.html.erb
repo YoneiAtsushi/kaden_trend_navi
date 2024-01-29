@@ -6,10 +6,10 @@
   </div>
 
   <%= form_with(model: Admin.new, url: new_admin_session_path) do |f| %>
-    <div class="row ">
+    <div class="row">
       <table class="table table-borderless d-flex justify-content-center">
         <tr class="field my-auto">
-          <td><%= f.label :メールアドレス, class: "my-auto" %>
+          <td><%= f.label :メールアドレス, class: "my-auto" %></td>
           <td class="colspan-"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", size: 40, class: "rounded mx-auto my-auto" %></td>
         </tr>
 
@@ -20,10 +20,10 @@
 
         <tr>
           <td class="colspan-1"></td>
-          <td><%= f.submit "ログイン",class:"btn btn-primary my-3" %></td>
+          <td><%= f.submit "ログイン", class:"btn btn-primary my-3" %></td>
         </tr>
       </table>
-    </diV>
+    </div>
   <% end %>
-      <%= render "admin/shared/links" %>
+  <%= render "admin/shared/links" %>
 </div>

@@ -13,16 +13,16 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-     if
-      @user.update(user_params)
+
+    if @user.update(user_params)
       flash[:notice] = "ユーザ情報の更新が完了しました。"
       redirect_to user_mypage_path(current_user)
-     else
+    else
       render :edit
-     end
+    end
   end
-  
-  def chcek
+
+  def check
   end
 
   def withdraw
@@ -33,17 +33,16 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
-   private
+  private
 
   def user_params
-    params.require(:user).permit(:name, :sex, :email, :profile_image,)
+    params.require(:user).permit(:name, :sex, :email, :profile_image)
   end
-
 
   def ensure_guest_user
     @user = current_user
     if @user.guest_user?
-      redirect_to user_mypage_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_mypage_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 end

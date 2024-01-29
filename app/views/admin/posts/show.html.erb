@@ -7,7 +7,7 @@
       <div class="card-body">
         <table class="table">
           <tbody>
-             <tr>
+            <tr>
               <th style="width: 110px;">投稿日</th>
               <td style="text-align: center;"><%= @post.created_at.strftime("%Y年%m月%d日") %></td>
             </tr>
@@ -30,6 +30,7 @@
             <tr>
               <th>型番</th>
               <td style="text-align: center;"><%= @post.product_name %></td>
+            </tr>
             <tr>
               <th>おすすめ</th>
               <td style="text-align: center;"><%= render 'public/posts/static_rate', post: @post %></td>
@@ -63,7 +64,7 @@
       </div>
     </div>
     <div class="text-center mt-4">
-      <%= link_to "投稿削除", admin_post_path(@post), class:"btn btn-outline-danger", method: :delete , data: {confirm: "本当に消しますか？"} %>
+      <%= link_to "投稿削除", admin_post_path(@post), class:"btn btn-outline-danger", method: :delete, data: {confirm: "本当に消しますか？"} %>
     </div>
   </div>
 
@@ -73,15 +74,15 @@
         <h5 class="card-title">コメント欄</h5>
       </div>
       <div class="card-body">
-          <% @post.comments.each do |comment| %>
-            <div class="card mb-3">
-              <div class="card-body">
-                <span class="comment-name small"><%= comment.user.name %></span>
-                <span><%= link_to '削除', admin_comment_path(comment), method: :delete %></span>
-             　  <p class="card-text"><%= comment.text %></p>
-              </div>
+        <% @post.comments.each do |comment| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <span class="comment-name small"><%= comment.user.name %></span>
+              <span><%= link_to '削除', admin_comment_path(comment), method: :delete %></span>
+              <p class="card-text"><%= comment.text %></p>
             </div>
-          <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

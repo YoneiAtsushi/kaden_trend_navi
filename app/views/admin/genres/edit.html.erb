@@ -2,14 +2,16 @@
   <div class="row">
     <h4 class="col-12 text-center border p-3 my-3">ジャンル編集</h4> 
   </div>
+
   <div class="row d-flex justify-content-center">
     <div>
-      <%= form_with model: @genre, url: admin_genre_path,method: :patch do |f| %>
+      <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
         <table class="table table-borderless">
-            <tr>  
-              <td><%= f.text_field :name, class: "mt-5" %></td>
-            <tr>
+          <tr>  
+            <td><%= f.text_field :name, class: "mt-5" %></td>
+          </tr>
         </table>
+
         <table class="table table-borderless">
           <div class="row">
             <tr>
@@ -20,4 +22,4 @@
       <% end %>
     </div>
   </div>
-</div>  
+</div>
