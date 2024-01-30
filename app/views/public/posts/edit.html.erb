@@ -1,45 +1,51 @@
-<div class=row>
+<div class="row">
   <div class="col-8 offset-3">
     <%= render "public/shared/error_messages", resource: @post %>
   </div>
 </div>
-<div class=container>
-  <div class=row>
+
+<div class="container">
+  <div class="row">
     <div class="col-10 offset-1">
-      <h1 class="mt-4 ">投稿編集画面</h1>
+      <h1 class="mt-4">投稿編集画面</h1>
       <%= form_with model: @post do |f| %>
-      <div class="form-group mt-4">
-        <h4>タイトル</h4>
-        <%= f.text_area :title, class:"form-control form-control-sm" %>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-6">
-          <h4>型式</h4>
-          <%= f.text_field :product_name, class:"form-control form-control-sm" %>
+        <div class="form-group mt-4">
+          <h4>タイトル</h4>
+          <%= f.text_area :title, class: "form-control form-control-sm" %>
         </div>
-        <div class="form-group col-6">
-          <h4>ジャンル</h4>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name,{include_blank: '-- 選択してください --'} ,{class: "form-control form-control-sm", id: "custom_genre_select",include_blank: 'aaa'} %>
+
+        <div class="form-row">
+          <div class="form-group col-6">
+            <h4>型式</h4>
+            <%= f.text_field :product_name, class: "form-control form-control-sm" %>
+          </div>
+          <div class="form-group col-6">
+            <h4>ジャンル</h4>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '-- 選択してください --' }, { class: "form-control form-control-sm", id: "custom_genre_select", include_blank: 'aaa' } %>
+          </div>
         </div>
-      </div>
-      <div class="form-row mb-2">
-        <div class="form-group col-6">
-          <h4 class="mb-3">紹介画像</h4>
-          <%= f.file_field :image, accept: "image/*" %>
+
+        <div class="form-row mb-2">
+          <div class="form-group col-6">
+            <h4 class="mb-3">紹介画像</h4>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+
+          <div class="form-group col-6" id="star">
+            <h4 class="mb-3">5段階評価</h4>
+            <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
+            <div id="post_raty"></div>
+          </div>
         </div>
-        <div class="form-group col-6" id="star">
-          <h4 class="mb-3">5段階評価</h4>
-          <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-          <div id="post_raty"></div>
-        </div>
+
         <script>
           $(document).on('turbolinks:load', function() {
             let elem = document.querySelector('#post_raty');
             if (elem == null) return;
-        
+
             let currentStar = $('#review_star').val() || 0; // 現在のstarの値を取得、なければ0
-        
-            elem.innerHTML = ""
+
+            elem.innerHTML = "";
             let opt = {
               starOn: "<%= asset_path('star-on.png') %>",
               starOff: "<%= asset_path('star-off.png') %>",
@@ -49,16 +55,17 @@
             raty(elem, opt);
           });
         </script>
-       </div>
-       <div class="form-group">
-         <h4>紹介文</h4>
-         <%= f.text_area :introduction, class:"form-control" %>
-       </div>
-       <div class="form-group text-center">
-         <%= f.submit '更新する', class: "btn btn-outline-success mr-5" %>
-         <%= link_to "戻る", post_path(@post.id), class: "btn btn-outline-dark ml-5" %>
-       </div>
-       <% end %>
-     </div>
-   </div>
+
+        <div class="form-group">
+          <h4>紹介文</h4>
+          <%= f.text_area :introduction, class: "form-control" %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit '更新する', class: "btn btn-outline-success mr-5" %>
+          <%= link_to "戻る", post_path(@post.id), class: "btn btn-outline-dark ml-5" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -4,30 +4,30 @@
 
 <div class="row">
   <div class="col-12 justify-content-center">
-    <div class="mb-3 mx-auto" style="max-width: 800px; ">
+    <div class="mb-3 mx-auto" style="max-width: 800px;">
       <div class="row no-gutters">
         <div class="card col-12" style="margin-bottom: 10px;">
           <div class="row">
             <div class="col-3 m-auto" style="padding-left: 40px;">
-              <%= image_tag @user.get_profile_image, width: 100, height: 100,class: 'rounded-circle' %>
+              <%= image_tag @user.get_profile_image, width: 100, height: 100, class: 'rounded-circle' %>
             </div>
             <div class="col-9">
               <div class="card-body">
                 <h5 class="card-title"></h5>
-                 <p class="card-text">
-                   <div class="row">
-                     <div class="col-4">ユーザー名</div>
-                     <div class="col-8">：<%= @user.name %></div>
-                   </div>
-                   <div class="row">
-                     <div class="col-4">性別</div>
-                     <div class="col-8">：<%= @user.sex %></div>
-                   </div>
-                   <div class="row">
-                     <div class="col-4">メールアドレス</div>
-                     <div class="col-8">：<%= @user.email %></div>
-                   </div>
-                 </p>
+                <p class="card-text">
+                  <div class="row">
+                    <div class="col-4">ユーザー名</div>
+                    <div class="col-8">：<%= @user.name %></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">性別</div>
+                    <div class="col-8">：<%= @user.sex %></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">メールアドレス</div>
+                    <div class="col-8">：<%= @user.email %></div>
+                  </div>
+                </p>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
 </div>
 <div class="row">
   <div class="col-12 justify-content-center">
-    <div class="mb-3 mx-auto" style="max-width: 600px; ">
+    <div class="mb-3 mx-auto" style="max-width: 600px;">
       <div class="row no-gutters">
         <% if !@posts.empty? %>
           <% @posts.each do |post| %>
@@ -64,43 +64,41 @@
                     <h5 class="card-title" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                       <%= link_to post.title, post_path(post.id) %>
                     </h5>
-                     <p class="card-text">
-                       <div class="row">
-                         <div class="col-4">ジャンル</div>
-                         <div class="col-8">：<%= post.genre.name %></div>
-                       </div>
-                       <div class="row">
-                         <div class="col-4">品番</div>
-                         <div class="col-8">：<%= post.product_name %></div>
-                       </div>
-                       <div class="row">
-                         <div class="col-4">タグ</div>
-                         <div class="col-8">：
+                    <p class="card-text">
+                      <div class="row">
+                        <div class="col-4">ジャンル</div>
+                        <div class="col-8">：<%= post.genre.name %></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">品番</div>
+                        <div class="col-8">：<%= post.product_name %></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">タグ</div>
+                        <div class="col-8">：
                           <% post.tags.each do |tag| %>
-                          <span class="badge badge-success"><%= tag.name %></span>
+                            <span class="badge badge-success"><%= tag.name %></span>
                           <% end %>
-                         </div>
-                       </div>
-                       <div class="row">
-                         <div class="col-4">参考になった</div>
-                         <div class="col-8">：<%= post.favorites.count %> 件</div>
-                       </div>
-                       <div class="row">
-                         <div class="col-4">おすすめ</div>
-                         <div class="col-8">：<%= render 'public/posts/static_rate', post: post %></div>
-                       </div>
-                     </p>
-                     <p class="card-text text-right text-secondary"><%= post.created_at.strftime("%Y年%m月%d日") %>投稿</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">参考になった</div>
+                        <div class="col-8">：<%= post.favorites.count %> 件</div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">おすすめ</div>
+                        <div class="col-8">：<%= render 'public/posts/static_rate', post: post %></div>
+                      </div>
+                    </p>
+                    <p class="card-text text-right text-secondary"><%= post.created_at.strftime("%Y年%m月%d日") %>投稿</p>
                   </div>
                 </div>
               </div>
             </div>
           <% end %>
+        <% end %>
       </div>
     </div>
-      <%= render 'partial_template/paginate', posts: @posts %>
-      <% else %>
-      まだ投稿がありません
-      <% end %>
+    <%= render 'partial_template/paginate', posts: @posts %>
   </div>
 </div>

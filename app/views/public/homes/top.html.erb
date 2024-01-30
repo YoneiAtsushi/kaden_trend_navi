@@ -1,39 +1,39 @@
 <div class="container">
   <div class="row">
     <div class="col text-center">
-      <div class="image-container my-5 ">
-        <%= image_tag 'topページ.jpg', class: "img-fluid rounded-ig", style:"width: 1000px;"%>
+      <div class="image-container my-5">
+        <%= image_tag 'topページ.jpg', class: "img-fluid rounded-ig", style: "width: 1000px;" %>
       </div>
       <div class="main-text">
         <div class="text-content text-dark mt-4 mb-5">
           <h6>
             家電製品は、現代の生活において欠かせない物となっています。その生活をサポートするために家電製品のレビューサイトを作成しました。<br>
-            当サイトではユーザーからの実際のレビューのを掲載。ユーザーの生の声を通じて、製品の日常でのパフォーマンスを知ることができます。
+            当サイトではユーザーからの実際のレビューを掲載。ユーザーの生の声を通じて、製品の日常でのパフォーマンスを知ることができます。
           </h6>
         </div>
       </div>
     </div>
   </div>
- </div>
+</div>
 
-  <div class="btn-wrapper row mx-auto justify-content-center mb-5">
-    <% if signed_in? %>
-      <div class="col-3">
-        <%= link_to "ゲストログイン（閲覧用）", public_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block", method: :post %>
-      </div>
-      <div class="col-3">
-        <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-success btn-sm btn-block"  %>
-      </div>
-    <% else %>
-      <div class="col-3">
-        <%= link_to "ゲストログイン（閲覧用）", public_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block", method: :post %>
-      </div>
-      <div class="col-3">
-        <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-info btn-sm btn-block" %>
-      </div>
-      <div class="col-3">
-        <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-success btn-sm btn-block"  %>
-      </div>
-    <% end %>
-  </div>
+<div class="btn-wrapper row mx-auto justify-content-center mb-5">
+  <% if signed_in? %>
+    <div class="col-3">
+      <%= link_to "ゲストログイン（閲覧用）", public_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block", method: :post %>
+    </div>
+    <div class="col-3">
+      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-success btn-sm btn-block"  %>
+    </div>
+  <% else %>
+    <div class="col-3">
+      <%= link_to "ゲストログイン（閲覧用）", public_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block", method: :post %>
+    </div>
+    <div class="col-3">
+      <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-info btn-sm btn-block" %>
+    </div>
+    <div class="col-3">
+      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-success btn-sm btn-block"  %>
+    </div>
+  <% end %>
+</div>
 
