@@ -15,6 +15,12 @@
 - 自分が持っている家電製品の情報を共有したい人。
 - 使い方（お手入れの方法等）について悩まれている人。
 ​
+### 設計書
+
+- ER図は[こちら](https://app.diagrams.net/#G1x2Dq3auqa3nNXlcGS-znj1qaFetSGdHG)
+- テーブル定義書は[こちら](https://docs.google.com/spreadsheets/d/13vPVFBf3xMrdCxvluqxvtcyOCjoFguDX/edit#gid=22058163)
+- 詳細設計書は[こちら](https://docs.google.com/spreadsheets/d/1VnVK5No17xbXcHBGba4DZ5NsSKjtqls36lqsBGw7mJ4/edit#gid=1145189879)
+
 ### 主な利用シーン
 
 - 家電製品の購入を検討している時。
